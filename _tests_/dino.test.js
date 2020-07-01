@@ -29,4 +29,20 @@ describe ('dino hangman', () => {
     game.checkLetter("Z");
     expect(game.guesses).toEqual(6);
   });
+
+  test('should signify that the player has lost if the number of guesses is reduced to 0', () => {
+    game.parseWord(["G", "a", "r", "g", "o", "y", "l", "e", "o", "s", "a", "u", "r", "u", "s"]);
+    game.guesses =1;
+    game.checkLetter("Z");
+    expect(game.hasLost).toBeTruthy();
+  });
+
+  test('should signify that the player has won if all the guessed flags for every letter in the word are set to true', ()=> {
+    game.parseWord(["T", "r", "e", "x"]);
+    for (const letter of game.word) {
+      letter.guessed = true;
+    }
+    expect(game.hasWon).toBeTruthy();
+  });
+
 });

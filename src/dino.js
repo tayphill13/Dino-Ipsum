@@ -6,6 +6,9 @@ export class Game {
     this.word = [];
     this.inputs = [];
     this.guesses = 7;
+    this.guessedLetterCount = 0;
+    this.hasLost = false;
+    this.hasWon = false;
   }
 
   async getWord () {
@@ -30,14 +33,35 @@ export class Game {
     const lowerCaseGuess = letterGuess.toLowerCase();
 
     if (!this.inputs.includes(lowerCaseGuess)) {
+      let incorrectGuess = true;
       for (let i =0; i < this.word.length; i++) {
         if (lowerCaseGuess === this.word[i].letter) {
           this.word[i].guessed = true;
+          this.guessedLetterCount++;
           this.inputs.push(lowerCaseGuess);
+          incorrectGuess = false;
         }
+      }
+      this.checkStatus();
+      if (incorrectGuess) {
+        this.guesses --;
+        this.checkStatus();
       }
     } else {
       return false;
+    }
+  }
+
+  checkStatus () {
+    this.hasWon = true;
+    for (const letter of this.word) {
+      if (letter.guessed === false) {
+        this.hasWon = false;
+        break;
+      }
+    }
+    if (this.guesses === 0) {
+      this.hasLost = true;
     }
   }
 
