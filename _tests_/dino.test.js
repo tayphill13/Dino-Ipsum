@@ -42,6 +42,7 @@ describe ('dino hangman', () => {
     for (const letter of game.word) {
       letter.guessed = true;
     }
+    game.checkStatus();
     expect(game.hasWon).toBeTruthy();
   });
 
