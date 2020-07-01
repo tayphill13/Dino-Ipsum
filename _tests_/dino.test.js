@@ -46,4 +46,7 @@ describe ('dino hangman', () => {
     expect(game.hasWon).toBeTruthy();
   });
 
+  test('', () =>  {
+    
+  });
 });

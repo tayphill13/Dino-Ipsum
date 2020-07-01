@@ -20,7 +20,6 @@ _This is a hangman style game where the user will begin the game with a dinosaur
 | If Player can complete the dinosaur word within the alotted amount of guesses, then game is won   |   |   |
 | User input will be validated to be a sinlge letter  |     |       |
 | If Player attempts to provide a letter that they have already guessed then an alert will tell them so |    |    |
-| 
 
 
 ## Setup/Installation Requirements

@@ -28,11 +28,11 @@ export class Game {
       this.word.push(parsedLetter);
     }
   }
-
+  
   checkLetter (letterGuess) {
     const lowerCaseGuess = letterGuess.toLowerCase();
 
-    if (!this.inputs.includes(lowerCaseGuess)) {
+    if (!this.inputs.includes(lowerCaseGuess) && /^[a-z]$/.test(lowerCaseGuess)) {
       let incorrectGuess = true;
       for (let i =0; i < this.word.length; i++) {
         if (lowerCaseGuess === this.word[i].letter) {
