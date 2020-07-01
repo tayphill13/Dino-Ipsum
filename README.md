@@ -52,7 +52,7 @@ _JQuery_
 _VSCode_
 _Webpack_
 _Jest_
-_API_
+_Dino Ipsum API <https://dinoipsum.herokuapp.com/#res>_
 
 ### License
 
