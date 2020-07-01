@@ -1,16 +1,26 @@
-# _PROJECT NAME_
+# _Dino-Hangman_
 
-#### _SHORT DESCR_
+#### _A Dino-Hangman game utilizing API call to Dino-Ipsum, 7.1.20_
 
-#### By _**YOUR NAME HERE**_
+#### By _**Peter, Ian and Taylor**_
 
 ## Description
 
-_Long deiscription._
+_This is a hangman style game where the user will begin the game with a dinosaur related word and will have to fill in the blanks.  For each wrong answer, a body part is added to the image and when the image is complete, the player will lose the game._
 
 ### Specs
 | Spec | Input | Output |
 | :-------------     | :------------- | :------------- |
+| Game object is created with properties for word and letter guessed thus far and a display of guesses |    |     |
+| An API call will be made to fetch a dinosaur word |     |       |
+| Use a function to compare input from the User to the letters missing in the dinosaur word |   |     |
+| If letter input doesn't match any missing dino letters then the letter is added to the letters guessed and subtracts 1 from remaining guesses |     |     |
+| If letter input matches a missing dino letter then that letter is added to the incomplete dinsoaur word |     |     |
+| If Player cannot complete the dinosaur word before running out of guesses then the game is lost |     |     |
+| If Player can complete the dinosaur word within the alotted amount of guesses, then game is won   |   |   |
+| User input will be validated to be a sinlge letter  |     |       |
+| If Player attempts to provide a letter that they have already guessed then an alert will tell them so |    |    |
+| 
 
 
 ## Setup/Installation Requirements
@@ -41,9 +51,12 @@ _Bootstrap_
 _JavaScript_
 _JQuery_
 _VSCode_
+_Webpack_
+_Jest_
+_API_
 
 ### License
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-Copyright (c) 2020 **_Your name(s)_**
+Copyright (c) 2020 **_Ian Scott, Peter Grimm and Taylor Phillips_**
