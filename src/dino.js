@@ -30,18 +30,20 @@ export class Game {
   }
   
   checkLetter (letterGuess) {
-    if (!/^[A-Za-z]$/.test(letterGuess))  { 
+    if (/^[A-Za-z]$/.test(letterGuess))  { 
       const lowerCaseGuess = letterGuess.toLowerCase();
       
       if (!this.inputs.includes(lowerCaseGuess)) {
         let incorrectGuess = true;
         for (let i =0; i < this.word.length; i++) {
-          if (lowerCaseGuess === this.word[i].letter) {
+          if (lowerCaseGuess === this.word[i].letter.toLowerCase()) {
             this.word[i].guessed = true;
             this.guessedLetterCount++;
-            this.inputs.push(lowerCaseGuess);
             incorrectGuess = false;
           }
+        }
+        if (incorrectGuess) {
+          this.inputs.push(lowerCaseGuess);
         }
         this.checkStatus();
         if (incorrectGuess) {
@@ -70,3 +72,7 @@ export class Game {
   
   }
 }
+
+/* if (this.word.every(element => element.guessed === true)) {
+  this.hasWon = true;
+} */

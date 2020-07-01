@@ -9,11 +9,13 @@ $(document).ready(function () {
   (async () => {
     await game.getWord();
     displayGame(game);
-  });
+  })();
   
-  $('#submit-button').submit(function (event) {
+  $("#input-form").submit(function (event) {
     event.preventDefault();
     let input = $("#letter-input").val();
+    $("#letter-input").val("");
+    debugger;
     game.checkLetter(input);
     displayGame(game);
   });
@@ -23,6 +25,7 @@ function displayGame(game) {
   displayWord(game);
   displayGuesses(game);
   displayGuessedLetters(game);
+  checkWinLose(game);
 }
 
 function displayWord (game) {
@@ -31,7 +34,7 @@ function displayWord (game) {
     if (game.word[i].guessed) {
       $("#dino-word").append(game.word[i].letter);
     } else {
-      $("#dino-word").append("_");
+      $("#dino-word").append(" _ ");
     }
   }
 }
@@ -42,4 +45,15 @@ function displayGuesses (game) {
 
 function displayGuessedLetters (game) {
   $("#already-guessed").text(game.inputs.join(", "));
+}
+
+function checkWinLose(game) {
+  if (game.hasWon) {
+    $('#submit-button').disabled = true;
+    $('#win-lose').text('You Won!');
+  }
+  if (game.hasLost) {
+    $('#submit-button').disabled = true;
+    $('#win-lose').text('You Lost!');
+  }
 }
