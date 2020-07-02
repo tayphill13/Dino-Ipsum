@@ -8,6 +8,7 @@ $(document).ready(function () {
   let game = new Game();
   (async () => {
     await game.getWord();
+    game.showInitialLetter();
     displayGame(game);
   })();
   
@@ -15,7 +16,6 @@ $(document).ready(function () {
     event.preventDefault();
     let input = $("#letter-input").val();
     $("#letter-input").val("");
-    debugger;
     game.checkLetter(input);
     displayGame(game);
   });
@@ -31,7 +31,7 @@ function displayGame(game) {
 function displayWord (game) {
   $("#dino-word").text("");
   for (let i = 0; i < game.word.length; i++) {
-    if (game.word[i].guessed) {
+    if (game.word[i].guess) {
       $("#dino-word").append(game.word[i].letter);
     } else {
       $("#dino-word").append(" _ ");
@@ -49,11 +49,18 @@ function displayGuessedLetters (game) {
 
 function checkWinLose(game) {
   if (game.hasWon) {
-    $('#submit-button').disabled = true;
+    $('#submit-button').prop("disabled", true);
     $('#win-lose').text('You Won!');
   }
+
   if (game.hasLost) {
-    $('#submit-button').disabled = true;
-    $('#win-lose').text('You Lost!');
+    let wordArray =[];
+    for(const letter of game.word) {
+      wordArray.push(letter.letter);
+    }
+
+    $('#submit-button').prop("disabled", true);
+    $('#win-lose').text(`You Lost! The word was: ${wordArray.join("")}`);
   }
+  
 }

@@ -37,7 +37,7 @@ export class Game {
         let incorrectGuess = true;
         for (let i =0; i < this.word.length; i++) {
           if (lowerCaseGuess === this.word[i].letter.toLowerCase()) {
-            this.word[i].guessed = true;
+            this.word[i].guess = true;
             this.guessedLetterCount++;
             incorrectGuess = false;
           }
@@ -57,22 +57,43 @@ export class Game {
       return false;
     }
   }
-    
+
   checkStatus () {
-    this.hasWon = true;
-    for (const letter of this.word) {
-      if (letter.guessed === false) {
-        this.hasWon = false;
-        break;
-      }
+    if (this.word.every(element => element.guess === true)) {
+      this.hasWon = true;
     }
     if (this.guesses === 0) {
       this.hasLost = true;
     }
+  }
+
+  showInitialLetter() {
+    let numberOfLetters = Math.floor(this.word.length/4);
+    console.log(numberOfLetters);
+    if (numberOfLetters > 0) {
+      let numberOfRevealedLetters = 0;
+      while (numberOfLetters > numberOfRevealedLetters) {
+        const randomLetter = this.getRndInteger(this.word.length);
+        if (this.word[randomLetter].guess === false) {
+          let count = this.revealRepeatLetters(this.word[randomLetter].letter);
+          numberOfRevealedLetters += count;
+        }
+      }
+    }
+  }
+
+  revealRepeatLetters (inputLetter) {
+    let count = 0;
+    for (let i = 0; i < this.word.length; i++) {
+      if (this.word[i].letter === inputLetter) {
+        this.word[i].guess = true;
+        count ++;
+      }
+    }
+    return count;
+  }
   
+  getRndInteger(max) {
+    return Math.floor(Math.random() * (max) );
   }
 }
-
-/* if (this.word.every(element => element.guessed === true)) {
-  this.hasWon = true;
-} */
