@@ -1,7 +1,7 @@
-export class NameService {
-  async getDinoName() {
+export class GiphService {
+  async getGiphy() {
     try {
-      let response = await fetch("https://dinoipsum.herokuapp.com/api?format=json&words=1&paragraphs=1");
+      let response = await fetch(`https://api.giphy.com/v1/gifs/random?api_key=${process.env.API_KEY}&rating=g&tag=dinosaur`);
       let jsonResponse;
       if (response.ok && response.status == 200) {
         jsonResponse = await response.json();

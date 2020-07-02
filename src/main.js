@@ -3,12 +3,14 @@ import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles.css';
 import {Game} from './dino.js';
+import {GiphService} from './giphy-service.js';
 
 $(document).ready(function () {
   let game = new Game();
   (async () => {
     await game.getWord();
     game.showInitialLetter();
+    await displayGif();
     displayGame(game);
   })();
   
@@ -62,5 +64,19 @@ function checkWinLose(game) {
     $('#submit-button').prop("disabled", true);
     $('#win-lose').text(`You Lost! The word was: ${wordArray.join("")}`);
   }
+ 
+}
   
+
+
+async function displayGif() {
+  let gifService = new gifService();
+  let response = await gifService.getGiphy();
+  
+  if (response) {
+    this.parseWord(response[0][0].split(""));
+  } else {
+    response = "error";
+    this.parseWord(response.split(""));
+  }
 }
