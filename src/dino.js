@@ -69,7 +69,6 @@ export class Game {
 
   showInitialLetter() {
     let numberOfLetters = Math.floor(this.word.length/4);
-    console.log(numberOfLetters);
     if (numberOfLetters > 0) {
       let numberOfRevealedLetters = 0;
       while (numberOfLetters > numberOfRevealedLetters) {
