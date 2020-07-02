@@ -71,7 +71,7 @@ async function displayGif() {
   let response = await giphService.getGiphy();
   
   if (response) {
-    $("#gif-container").html(`<img src="${response.data.embed_url}" alt="A Dinosaur Gif"`);
+    $("#gif-container").html(`<img src="${response.data.images.downsized_large.url}" alt="A Dinosaur Gif">`);
   } else {
     $("#gif-container").html(`<p>There was an erorr retrieving a Dinosaur gif</p>`);
   }
