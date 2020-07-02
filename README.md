@@ -1,6 +1,6 @@
 # _Dino-Hangman_
 
-#### _A Dino-Hangman game utilizing API call to Dino-Ipsum, 7.1.20_
+#### _A Dino-Hangman game utilizing API call to Dino-Ipsum, 7.2.20_
 
 #### By _**Peter, Ian and Taylor**_
 

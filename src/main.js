@@ -64,19 +64,15 @@ function checkWinLose(game) {
     $('#submit-button').prop("disabled", true);
     $('#win-lose').text(`You Lost! The word was: ${wordArray.join("")}`);
   }
- 
 }
-  
-
 
 async function displayGif() {
-  let gifService = new gifService();
-  let response = await gifService.getGiphy();
+  let giphService = new GiphService();
+  let response = await giphService.getGiphy();
   
   if (response) {
-    this.parseWord(response[0][0].split(""));
+    $("#gif-container").html(`<img src="${response.data.embed_url}" alt="A Dinosaur Gif"`);
   } else {
-    response = "error";
-    this.parseWord(response.split(""));
+    $("#gif-container").html(`<p>There was an erorr retrieving a Dinosaur gif</p>`);
   }
 }
